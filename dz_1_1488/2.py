@@ -8,5 +8,4 @@ y = f - d
 if y == 0:
     print("Делить на 0 нельзя!!!!")
 else: 
-    print(x/y)
-
+    print(x / y)
