@@ -1,5 +1,5 @@
 x = float(input())
 if x == int(x):
     print ("Целое")
-else :
+else:
     print("Не целое")
