@@ -1,7 +1,7 @@
-a = str(input())
+a = input()
 b = list()
 while a !='':
     b.append(a)
-    a = str(input())
+    a = input()
 else:
     print(b)	
