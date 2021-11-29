@@ -1,7 +1,0 @@
-class bean_tt (unittest.TestCase):
-    def bin_search(self):
-        self.assertAlmostEqual(bin_search([42],-1),None)
-        self.assertAlmostEqual(bin_search([1],-),None)
-        self.assertAlmostEqual(bin_search([1,2,3,4,5,6,7],7),6)
-        self.assertAlmostEqual(bin_search([1,2,3,4,5,6,7],1),0)
-        self.assertAlmostEqual(bin_search([],7),None)
