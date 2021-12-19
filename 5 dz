@@ -1,37 +1,41 @@
-from math import trunc
+d = [8,9,10,11,12,13,14]
 
-count = int(input())
-a = []
-for i in range(count):
-    a.append(int(input()))
-key = int(input())
 
-def list_n(j):
-    q = list()
-    i = 0
-    while i < j:
-        i += 1
-        q.append(i)
-    return q
+def poisk(d, n):
+    lower = -1
+    upper = len(d) - 1
+    while lower < upper - 1:
+        center = (lower + upper) // 2
+        if d[center] >= n:
+            upper = center
+        else:
+            lower = center
+    if upper <= lower:
+        return None
+    elif d[upper] == n:
+        return upper
 
-def bin_search(lst, key):
-    for i in range(len(lst)):
-        if lst[i] == key:
-            return "Ваш индекс :" + str(i)
-def tests():
-    print(bin_search([1, 2, 3, 4, 5], 5))#4
-    print(bin_search([69], 1))#None
-    print(bin_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 4))#3
-    print(bin_search([0, 1, 2], 0))#0
-    print(bin_search([1], -2))#None
-    print(bin_search([1, 2, 3, 4, 3], 3))#2
-    print(bin_search(a, key))
-tests()
-def binar():
-    assert bin_search([1, 2, 3, 4, 5], 5) == 4
-    assert bin_search([69], 1) is None
-    assert bin_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 4) == 3
-    assert bin_search([0, 1, 2], 0) == 0
-    assert bin_search([1], -2) is None
-    assert bin_search([1, 2, 3, 4, 3], 3) == 2
-    assert bin_search(a, key) == 0
+
+n = int(input("Элемент, который нужно найти: "))
+print(poisk(d, n))
+assert poisk([1, 2, 3, 4, 5, 6, 7], 5) == 4
+assert poisk([7, 22, 34, 41, 69, 75, 77], 7) == 0
+assert poisk([5, 42, 55, 77, 634, 2345, 33245], 1) is None
+assert poisk([], 1) is None
+assert poisk([1, 1, 1], 1) == 0
+assert poisk([], 42) is None
+assert poisk([0], 0) == 0
+assert poisk([0], 1) is None
+assert poisk([-1, 0, 42], 0) == 1
+assert poisk([-42, 0, 42], 42) == 2
+assert poisk([-6, -5, -4, -3, -2, -1], -4) == 2
+assert poisk([1, 2, 3, 4, 5, 6], 4) == 3
+assert poisk([1, 2, 3, 4, 5, 6, 7], 4) == 3
+assert poisk([1, 2, 3, 4, 5], 7) is None
+assert poisk([1, 2, 3, 4, 5, 6], 7) is None
+assert poisk([42, 42, 42, 42, 42], 42) == 0
+assert poisk([-42, -42, -42, -42, -42], -42) == 0
+assert poisk([42, 42, 42, 42, 43], 43) == 4
+assert poisk([41, 42, 42, 42, 42], 41) == 0
+assert poisk([-2, -2, -1, 0, 1, 2, 2, 2], -1) == 2
+assert poisk([-2, -2, -1, 0, 1, 1, 2, 2], 1) == 4
